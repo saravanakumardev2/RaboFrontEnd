@@ -1,0 +1,28 @@
+<h1 style="text-align: center;">RaboBank FrontEnd Assignment</h1>
+<div style="width:20%;margin: 0 auto;">
+  <input type="file" class="upload" (change)="changeListener($event.target.files)">
+  <div *ngIf="data.length > 0;">
+    <div style="padding: 10px 0px;">
+      <input type="text" name="term" [(ngModel)]="term" placeholder="we can Filter By Issuecount" />
+    </div>
+    <table cellpadding="4" cellspacing="4" border="1" style="padding: 10px 0px;">
+      <thead>
+        <tr>
+          <th>FirstName</th>
+          <th>SurName</th>
+          <th>Issue Count</th>
+          <th>Date of Birth</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let listData of data | myFilter:term:['Issuecount']; let i = index">
+          <td>{{listData['Firstname']}}</td>
+          <td>{{listData['Surname']}}</td>
+          <td>{{listData['Issuecount']}}</td>
+          <td>{{listData['Dateofbirth']}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
